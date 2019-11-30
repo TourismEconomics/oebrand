@@ -97,3 +97,8 @@ names(oe_palette("pale"))
 #> [1] "pale_blue"    "pale_midblue" "pale_ltblue"  "pale_grey"    "pale_midgrey"
 #> [6] "pale_ltgrey"  "pale_mustard" "pale_dkbeige" "pale_beige"
 ```
+
+## Background
+
+The [wesanderson](https://github.com/karthik/wesanderson) package was a
+useful example in developing this package.

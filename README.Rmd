@@ -73,3 +73,8 @@ names(oe_palette("bold"))
 oe_palette("pale")
 names(oe_palette("pale"))
 ```
+
+
+## Background
+
+The [wesanderson](https://github.com/karthik/wesanderson) package was a useful example in developing this package. 
