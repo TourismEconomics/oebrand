@@ -13,23 +13,55 @@
 #' @return A vector of colours.
 #' @export
 #'
+#' @importFrom magrittr %>%
+#' @importFrom ggplot2 ggplot
+#' @importFrom ggplot2 aes
+#' @importFrom ggplot2 geom_bar
+#' @importFrom ggplot2 geom_point
+#' @importFrom ggplot2 scale_fill_manual
+#' @importFrom ggplot2 scale_color_manual
+#' @importFrom ggplot2 scale_colour_manual
+#'
 #' @examples
-#' #' # If you need more colours than normally found in a palette, you
+#' # If you need more colours than normally found in a palette, you
 #' # can use a continuous palette to interpolate between existing
 #' # colours
-#' pal <- wes_palette(21, name = "Zissou1", type = "continuous")
+#' pal <- oe_palette("secondary", 21, type = "continuous")
 #' image(volcano, col = pal)
 #'
-#' we can't directly feed the palette into scale_fill_manual because
-#' the colors are named in the vector. If one provides scale_fill_manual
-#' a named vector, then ggplot2 is trying to match the colors to the
-#' values in the dataframe
+#' # We can't directly feed the palette into scale_fill_manual because
+#' # the colors are named in the vector. If one provides scale_fill_manual
+#' # a named vector, then ggplot2 is trying to match the colors to the
+#' # values in the dataframe
 #'
+#' # One approach: Just directly assign from the palette
+#' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+#'   geom_point(size = 4) +
+#'   scale_colour_manual(values = c(
+#'     "setosa"=oe_palettes$primary[["prime_blue"]],
+#'     "virginica"=oe_palettes$primary[["prime_grey"]],
+#'     "versicolor"=oe_palettes$primary[["prime_ltgrey"]]))
 #'
+#' # Another approach: Create vector of colors by selecting palette, extract
+#' # specific colors, and unname
+#' cols <- oe_palette("primary")[c("prime_blue", "prime_ltgrey")] %>%
+#'  unname()
+#' ggplot(mtcars, aes(factor(cyl), fill=factor(vs))) +  geom_bar() +
+#'  scale_fill_manual(values = cols)
 #'
+#' # Another approach: Create vector of colors by seleting palette and unname
+#' # it
+#' cols <- unname(oe_palette("primary"))
+#' ggplot(mtcars, aes(factor(cyl), fill=factor(vs))) +  geom_bar() +
+#'  scale_fill_manual(values = cols)
 #'
+#' # Another approach: Create vector of colors and then set names (e.g.
+#' # to match dataframe values)
+#' cols <- oe_palette("primary")[c("prime_blue", "prime_ltgrey")] %>%
+#'  setNames(c("1", "0"))
+#' ggplot(mtcars, aes(factor(cyl), fill=factor(vs))) +  geom_bar() +
+#'  scale_fill_manual(values = cols)
 #'
-
 
 oe_palette <- function(name, n, type = c("discrete", "continuous")) {
   type <- match.arg(type)
@@ -54,15 +86,17 @@ oe_palette <- function(name, n, type = c("discrete", "continuous")) {
 }
 
 
-#' Title
+#' Print palette
 #'
-#' @param x
+#' @param x Palette
 #' @param ...
 #'
-#' @return
+#' @return Image?
 #' @export
 #'
 #' @examples
+#'
+#' oe_palette("blue_grad")
 print.palette <- function(x, ...) {
   n <- length(x)
   old <- par(mar = c(0.5, 0.5, 0.5, 0.5))
