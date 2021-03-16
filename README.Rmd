@@ -1,0 +1,80 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# oebrand
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This package provides Oxford Economics brand tools, including several color palettes. 
+
+## Installation
+
+You can install this package from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("TourismEconomics/oebrand")
+```
+
+## Usage
+
+```{r, palettes_dummy}
+library("oebrand")
+# See all palettes
+names(oe_palettes)
+```
+
+## Palettes
+
+### primary
+
+```{r, primary}
+oe_palette("primary")
+names(oe_palette("primary"))
+```
+
+### secondary
+
+```{r, secondary}
+oe_palette("secondary")
+names(oe_palette("secondary"))
+```
+
+### blue_grad
+
+```{r, blue_grad}
+oe_palette("blue_grad")
+names(oe_palette("blue_grad"))
+```
+
+### bold
+
+```{r, bold}
+oe_palette("bold")
+names(oe_palette("bold"))
+```
+
+### pale
+
+```{r, pale}
+oe_palette("pale")
+names(oe_palette("pale"))
+```
+
+
+## Background
+
+The [wesanderson](https://github.com/karthik/wesanderson) package was a useful example in developing this package. 

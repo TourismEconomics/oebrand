@@ -1,0 +1,14 @@
+Package: oebrand
+Type: Package
+Title: Oxford Economics Brand Tools
+Version: 0.1.0
+Author: Aran Ryan
+Maintainer: Aran Ryan <aran.ryan@gmail.com>
+Description: Provides brand color palettes and logos
+    Contains brand color palettes.
+License: MIT License
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/TourismEconomics/oebrand
+BugReports: https://github.com/TourismEconomics/oebrand/issues
+RoxygenNote: 6.1.1
