@@ -12,3 +12,4 @@ LazyData: true
 URL: https://github.com/TourismEconomics/oebrand
 BugReports: https://github.com/TourismEconomics/oebrand/issues
 RoxygenNote: 6.1.1
+Imports: ggplot2, magrittr
